@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3369641F2AA5B9BC0097E762 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */; };
 		339C13592AA5B81B00B35FAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C13582AA5B81B00B35FAB /* AppDelegate.swift */; };
 		339C135B2AA5B81B00B35FAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C135A2AA5B81B00B35FAB /* SceneDelegate.swift */; };
 		339C135D2AA5B81B00B35FAB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C135C2AA5B81B00B35FAB /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
 		339C13552AA5B81B00B35FAB /* NearMeApp(CoreLocation+ARKit).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NearMeApp(CoreLocation+ARKit).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C13582AA5B81B00B35FAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		339C135A2AA5B81B00B35FAB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				339C13612AA5B81C00B35FAB /* Assets.xcassets */,
 				339C13632AA5B81C00B35FAB /* LaunchScreen.storyboard */,
 				339C13662AA5B81C00B35FAB /* Info.plist */,
+				3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */,
 			);
 			path = "NearMeApp(CoreLocation+ARKit)";
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				339C135D2AA5B81B00B35FAB /* ViewController.swift in Sources */,
+				3369641F2AA5B9BC0097E762 /* PlacesTableViewController.swift in Sources */,
 				339C13592AA5B81B00B35FAB /* AppDelegate.swift in Sources */,
 				339C135B2AA5B81B00B35FAB /* SceneDelegate.swift in Sources */,
 			);
