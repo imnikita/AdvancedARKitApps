@@ -8,17 +8,21 @@
 import UIKit
 import CoreLocation
 import MapKit
+import ARKit_CoreLocation
 
 class SelectedPlacesViewController: UIViewController {
     
     var place: String!
 	lazy private var locationManager = CLLocationManager()
+	private let sceneLocationView = SceneLocationView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = place
+		
 		setupLocationManager()
+		setupSceneLocationView()
 		getLocalPlaces()
     }
 	
@@ -26,6 +30,18 @@ class SelectedPlacesViewController: UIViewController {
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
+	}
+	
+	private func setupSceneLocationView() {
+		sceneLocationView.run()
+		view.addSubview(sceneLocationView)
+		sceneLocationView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			sceneLocationView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+			sceneLocationView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			sceneLocationView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+			sceneLocationView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		])
 	}
 	
 	private func getLocalPlaces() {
@@ -44,7 +60,12 @@ class SelectedPlacesViewController: UIViewController {
 			} else if let response = response {
 				response.mapItems.forEach {
 					let placeLocation = $0.placemark.location
-					debugPrint($0.placemark)
+					let image = UIImage(named: "pin") ?? UIImage()
+					let annotationNode = LocationAnnotationNode(location: placeLocation, image: image)
+					annotationNode.scaleRelativeToDistance = false
+					DispatchQueue.main.async {
+						self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+					}
 				}
 			}
 		}
