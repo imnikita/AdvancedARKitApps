@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		33352B652AAC894100A1ACFA /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 33352B642AAC894100A1ACFA /* ARCL */; };
 		3369641F2AA5B9BC0097E762 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */; };
 		339C13592AA5B81B00B35FAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C13582AA5B81B00B35FAB /* AppDelegate.swift */; };
 		339C135B2AA5B81B00B35FAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C135A2AA5B81B00B35FAB /* SceneDelegate.swift */; };
@@ -33,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33352B652AAC894100A1ACFA /* ARCL in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +88,9 @@
 			dependencies = (
 			);
 			name = "NearMeApp(CoreLocation+ARKit)";
+			packageProductDependencies = (
+				33352B642AAC894100A1ACFA /* ARCL */,
+			);
 			productName = "NearMeApp(CoreLocation+ARKit)";
 			productReference = 339C13552AA5B81B00B35FAB /* NearMeApp(CoreLocation+ARKit).app */;
 			productType = "com.apple.product-type.application";
@@ -114,6 +119,9 @@
 				Base,
 			);
 			mainGroup = 339C134C2AA5B81B00B35FAB;
+			packageReferences = (
+				33352B632AAC894100A1ACFA /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+			);
 			productRefGroup = 339C13562AA5B81B00B35FAB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -294,6 +302,7 @@
 				DEVELOPMENT_TEAM = 9F68F57DW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NearMeApp(CoreLocation+ARKit)/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "I need your cloths and your camera.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requirs your location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requirs your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -324,6 +333,7 @@
 				DEVELOPMENT_TEAM = 9F68F57DW8;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "NearMeApp(CoreLocation+ARKit)/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "I need your cloths and your camera.";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app requirs your location.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app requirs your location.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -366,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		33352B632AAC894100A1ACFA /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndrewHartAR/ARKit-CoreLocation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		33352B642AAC894100A1ACFA /* ARCL */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 33352B632AAC894100A1ACFA /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
+			productName = ARCL;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 339C134D2AA5B81B00B35FAB /* Project object */;
 }
