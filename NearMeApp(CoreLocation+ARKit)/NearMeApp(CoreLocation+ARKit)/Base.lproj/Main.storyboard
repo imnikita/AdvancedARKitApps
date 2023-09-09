@@ -40,10 +40,10 @@
             </objects>
             <point key="canvasLocation" x="906" y="1"/>
         </scene>
-        <!--View Controller-->
+        <!--Selected Places View Controller-->
         <scene sceneID="a01-B8-gPQ">
             <objects>
-                <viewController id="kJf-W6-kDc" customClass="ViewController" customModule="NearMeApp_CoreLocation_ARKit_" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kJf-W6-kDc" customClass="SelectedPlacesViewController" customModule="NearMeApp_CoreLocation_ARKit_" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VeP-oQ-yiM">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

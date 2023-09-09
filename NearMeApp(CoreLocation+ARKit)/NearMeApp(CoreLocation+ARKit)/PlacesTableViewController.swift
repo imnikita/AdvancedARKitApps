@@ -39,7 +39,7 @@ class PlacesTableViewController: UITableViewController {
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
         let place = places[indexPath.row]
         
-        if let destinationViewController = segue.destination as? ViewController {
+        if let destinationViewController = segue.destination as? SelectedPlacesViewController {
             destinationViewController.place = place
         }
     }
