@@ -19,13 +19,35 @@ class SelectedPlacesViewController: UIViewController {
         
         self.title = place
 		setupLocationManager()
+		getLocalPlaces()
     }
 	
 	private func setupLocationManager() {
 		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
-		debugPrint(locationManager.location?.coordinate)
+	}
+	
+	private func getLocalPlaces() {
+		guard let location = locationManager.location?.coordinate else { return }
+		let request = MKLocalSearch.Request()
+		request.naturalLanguageQuery = place
+		
+		var region = MKCoordinateRegion()
+		region.center = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+		request.region = region
+		
+		let search = MKLocalSearch(request: request)
+		search.start { response, error in
+			if let error = error {
+				debugPrint(error.localizedDescription)
+			} else if let response = response {
+				response.mapItems.forEach {
+					let placeLocation = $0.placemark.location
+					debugPrint($0.placemark)
+				}
+			}
+		}
 	}
 }
 
