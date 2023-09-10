@@ -27,7 +27,6 @@ class SelectedPlacesViewController: UIViewController {
     }
 	
 	private func setupLocationManager() {
-		locationManager.delegate = self
 		locationManager.desiredAccuracy = kCLLocationAccuracyBest
 		locationManager.requestWhenInUseAuthorization()
 	}
@@ -59,20 +58,12 @@ class SelectedPlacesViewController: UIViewController {
 				debugPrint(error.localizedDescription)
 			} else if let response = response {
 				response.mapItems.forEach {
-					let placeLocation = $0.placemark.location
-					let image = UIImage(named: "pin") ?? UIImage()
-					let annotationNode = LocationAnnotationNode(location: placeLocation, image: image)
-					annotationNode.scaleRelativeToDistance = false
+					let placeAnnotationNode = PlaceAnnotation(location: $0.placemark.location, title: $0.placemark.name ?? "")
 					DispatchQueue.main.async {
-						self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+						self.sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: placeAnnotationNode)
 					}
 				}
 			}
 		}
 	}
 }
-
-extension SelectedPlacesViewController: CLLocationManagerDelegate {
-	
-}
-

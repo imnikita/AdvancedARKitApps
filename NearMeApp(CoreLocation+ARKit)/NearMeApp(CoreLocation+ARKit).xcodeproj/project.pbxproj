@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		33352B652AAC894100A1ACFA /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 33352B642AAC894100A1ACFA /* ARCL */; };
+		33352B672AAC913100A1ACFA /* PlaceAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33352B662AAC913100A1ACFA /* PlaceAnnotation.swift */; };
 		3369641F2AA5B9BC0097E762 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */; };
 		339C13592AA5B81B00B35FAB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C13582AA5B81B00B35FAB /* AppDelegate.swift */; };
 		339C135B2AA5B81B00B35FAB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 339C135A2AA5B81B00B35FAB /* SceneDelegate.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33352B662AAC913100A1ACFA /* PlaceAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceAnnotation.swift; sourceTree = "<group>"; };
 		3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
 		339C13552AA5B81B00B35FAB /* NearMeApp(CoreLocation+ARKit).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "NearMeApp(CoreLocation+ARKit).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		339C13582AA5B81B00B35FAB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				339C13632AA5B81C00B35FAB /* LaunchScreen.storyboard */,
 				339C13662AA5B81C00B35FAB /* Info.plist */,
 				3369641E2AA5B9BC0097E762 /* PlacesTableViewController.swift */,
+				33352B662AAC913100A1ACFA /* PlaceAnnotation.swift */,
 			);
 			path = "NearMeApp(CoreLocation+ARKit)";
 			sourceTree = "<group>";
@@ -151,6 +154,7 @@
 			files = (
 				339C135D2AA5B81B00B35FAB /* SelectedPlacesViewController.swift in Sources */,
 				3369641F2AA5B9BC0097E762 /* PlacesTableViewController.swift in Sources */,
+				33352B672AAC913100A1ACFA /* PlaceAnnotation.swift in Sources */,
 				339C13592AA5B81B00B35FAB /* AppDelegate.swift in Sources */,
 				339C135B2AA5B81B00B35FAB /* SceneDelegate.swift in Sources */,
 			);
