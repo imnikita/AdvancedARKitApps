@@ -13,6 +13,7 @@
 		338019C42AB45602007B87ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338019C22AB45602007B87ED /* Main.storyboard */; };
 		338019C62AB45603007B87ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 338019C52AB45603007B87ED /* Assets.xcassets */; };
 		338019C92AB45603007B87ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 338019C72AB45603007B87ED /* LaunchScreen.storyboard */; };
+		338052EC2AB852F9001D9AF3 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 338052EB2AB852F9001D9AF3 /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		338019C32AB45602007B87ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		338019C52AB45603007B87ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		338019C82AB45603007B87ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		338019D32AB49FFC007B87ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338052EC2AB852F9001D9AF3 /* MBProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -55,6 +58,7 @@
 		338019BB2AB45602007B87ED /* imageDetection */ = {
 			isa = PBXGroup;
 			children = (
+				338019D32AB49FFC007B87ED /* Info.plist */,
 				338019BC2AB45602007B87ED /* AppDelegate.swift */,
 				338019BE2AB45602007B87ED /* art.scnassets */,
 				338019C02AB45602007B87ED /* ViewController.swift */,
@@ -81,6 +85,9 @@
 			dependencies = (
 			);
 			name = imageDetection;
+			packageProductDependencies = (
+				338052EB2AB852F9001D9AF3 /* MBProgressHUD */,
+			);
 			productName = imageDetection;
 			productReference = 338019B92AB45602007B87ED /* imageDetection.app */;
 			productType = "com.apple.product-type.application";
@@ -109,6 +116,9 @@
 				Base,
 			);
 			mainGroup = 338019B02AB45602007B87ED;
+			packageReferences = (
+				338052EA2AB852F9001D9AF3 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			productRefGroup = 338019BA2AB45602007B87ED /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -287,6 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9F68F57DW8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = imageDetection/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -317,6 +328,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9F68F57DW8;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = imageDetection/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -360,6 +372,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		338052EA2AB852F9001D9AF3 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		338052EB2AB852F9001D9AF3 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 338052EA2AB852F9001D9AF3 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 338019B12AB45602007B87ED /* Project object */;
 }

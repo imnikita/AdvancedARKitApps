@@ -8,10 +8,12 @@
 import UIKit
 import SceneKit
 import ARKit
+import MBProgressHUD
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+	private var hud: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +54,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
 	
 	func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-		if anchor is ARImageAnchor {
-			debugPrint("Image found")
+		if let imageAnchor = anchor as? ARImageAnchor, let name = imageAnchor.referenceImage.name {
+			DispatchQueue.main.async {
+				self.hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+				self.hud?.label.text = name
+				self.hud?.hide(animated: true, afterDelay: 1)
+				debugPrint(name)
+			}
 		}
 	}
 }
