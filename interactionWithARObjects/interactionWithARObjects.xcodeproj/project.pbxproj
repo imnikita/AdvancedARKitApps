@@ -16,6 +16,7 @@
 		3380530F2AB8583B001D9AF3 /* chair.dae in Resources */ = {isa = PBXBuildFile; fileRef = 3380530C2AB8583B001D9AF3 /* chair.dae */; };
 		338053102AB8583B001D9AF3 /* Neil Woo03.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3380530D2AB8583B001D9AF3 /* Neil Woo03.jpg */; };
 		338053112AB8583B001D9AF3 /* NeilFabricPlain008.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3380530E2AB8583B001D9AF3 /* NeilFabricPlain008.jpg */; };
+		338860EF2ABA1AD600F57460 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 338860EE2ABA1AD600F57460 /* MBProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				338860EF2ABA1AD600F57460 /* MBProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +92,9 @@
 			dependencies = (
 			);
 			name = interactionWithARObjects;
+			packageProductDependencies = (
+				338860EE2ABA1AD600F57460 /* MBProgressHUD */,
+			);
 			productName = interactionWithARObjects;
 			productReference = 338052F62AB8577A001D9AF3 /* interactionWithARObjects.app */;
 			productType = "com.apple.product-type.application";
@@ -118,6 +123,9 @@
 				Base,
 			);
 			mainGroup = 338052ED2AB8577A001D9AF3;
+			packageReferences = (
+				338860ED2ABA1AD600F57460 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+			);
 			productRefGroup = 338052F72AB8577A001D9AF3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -372,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		338860ED2ABA1AD600F57460 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		338860EE2ABA1AD600F57460 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 338860ED2ABA1AD600F57460 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 338052EE2AB8577A001D9AF3 /* Project object */;
 }

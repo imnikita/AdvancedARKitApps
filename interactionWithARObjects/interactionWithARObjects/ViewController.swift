@@ -8,16 +8,22 @@
 import UIKit
 import SceneKit
 import ARKit
+import MBProgressHUD
 
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    
+    private var hud: MBProgressHUD?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
+        
+        hud = MBProgressHUD.showAdded(to: self.view, animated: true)
+        hud?.label.text = "Detecting plane"
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
@@ -34,7 +40,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
+        configuration.planeDetection = .horizontal
+        
         // Run the view's session
         sceneView.session.run(configuration)
     }
@@ -44,5 +51,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Pause the view's session
         sceneView.session.pause()
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer,
+                  didAdd node: SCNNode,
+                  for anchor: ARAnchor) {
+        if anchor is ARPlaneAnchor {
+            DispatchQueue.main.async {
+                self.hud?.label.text = "Plane detected!"
+                self.hud?.hide(animated: true, afterDelay: 1)
+            }
+        }
     }
 }
