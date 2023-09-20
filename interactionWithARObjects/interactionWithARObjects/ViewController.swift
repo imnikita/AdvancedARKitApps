@@ -61,6 +61,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let gestureRecognizer = UITapGestureRecognizer(target: self,
                                                        action: #selector(tap))
         sceneView.addGestureRecognizer(gestureRecognizer)
+        
+        let pinchGesture = UIPinchGestureRecognizer(target: self,
+                                                    action: #selector(pinched))
+        sceneView.addGestureRecognizer(pinchGesture)
     }
     
     @objc
@@ -77,6 +81,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         chairNode.position = SCNVector3(column.x, column.y, column.z)
         
         self.sceneView.scene.rootNode.addChildNode(chairNode)
+    }
+    
+    @objc
+    private func pinched(_ recognizer: UIPinchGestureRecognizer) {
+        if recognizer.state == .changed {
+            guard let sceneView = recognizer.view as? ARSCNView else { return }
+            let touch = recognizer.location(in: sceneView)
+            
+            let hitTestResults = self.sceneView.hitTest(touch, options: nil)
+            
+            guard let hitTest = hitTestResults.first else { return }
+            let chairNode = hitTest.node
+            let pinchScaleX = Float(recognizer.scale) * chairNode.scale.x
+            let pinchScaleY = Float(recognizer.scale) * chairNode.scale.y
+            let pinchScaleZ = Float(recognizer.scale) * chairNode.scale.z
+            
+            chairNode.scale = SCNVector3(pinchScaleX, pinchScaleY, pinchScaleZ)
+            
+            recognizer.scale = 1
+        }
     }
     
     func renderer(_ renderer: SCNSceneRenderer,
