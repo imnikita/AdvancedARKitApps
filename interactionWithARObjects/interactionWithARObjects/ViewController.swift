@@ -18,6 +18,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     private var newAngleY: Float = 0
     private var currentAngleY: Float = 0
+    private var localTranslatePosition: CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let panGesture = UIPanGestureRecognizer(target: self,
                                                 action: #selector(pan))
         sceneView.addGestureRecognizer(panGesture)
+        
+        let longPressGesture = UILongPressGestureRecognizer(target: self,
+                                                            action: #selector(longPless))
+        sceneView.addGestureRecognizer(longPressGesture)
     }
     
     @objc
@@ -119,7 +124,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let hitTestResults = self.sceneView.hitTest(touch, options: nil)
             guard let hitTest = hitTestResults.first, let parentNode = hitTest.node.parent else { return }
-//            let chairNode = hitTest.node
             
             newAngleY = Float(translation.x) * Float(Double.pi / 180)
             newAngleY += currentAngleY
@@ -128,6 +132,23 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         if recognizer.state == .ended {
             currentAngleY = newAngleY
+        }
+    }
+    
+    @objc
+    private func longPless(_ recognizer: UILongPressGestureRecognizer) {
+        guard let sceneView = recognizer.view as? ARSCNView else { return }
+        let touch = recognizer.location(in: sceneView)
+        let hitTestResults = self.sceneView.hitTest(touch, options: nil)
+        guard let hitTest = hitTestResults.first, let parentNode = hitTest.node.parent else { return }
+        
+        if recognizer.state == .began {
+            localTranslatePosition = touch
+        } else if recognizer.state == .changed {
+            let deltaX = Float((touch.x - (localTranslatePosition?.x ?? 0.0)) / 700)
+            let deltaY = Float((touch.y - (localTranslatePosition?.y ?? 0.0)) / 700)
+            parentNode.localTranslate(by: SCNVector3(deltaX, 0, deltaY))
+            localTranslatePosition = touch
         }
     }
     
