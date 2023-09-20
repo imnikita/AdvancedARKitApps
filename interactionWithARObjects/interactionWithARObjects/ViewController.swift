@@ -16,6 +16,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     private var hud: MBProgressHUD?
     
+    private var newAngleY: Float = 0
+    private var currentAngleY: Float = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -65,6 +68,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let pinchGesture = UIPinchGestureRecognizer(target: self,
                                                     action: #selector(pinched))
         sceneView.addGestureRecognizer(pinchGesture)
+        
+        let panGesture = UIPanGestureRecognizer(target: self,
+                                                action: #selector(pan))
+        sceneView.addGestureRecognizer(panGesture)
     }
     
     @objc
@@ -75,7 +82,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         guard let hitTestResult = hitTestResults.first,
                 let chairScene = SCNScene(named: "chair.dae"),
-                let chairNode = chairScene.rootNode.childNode(withName: "chair",
+                let chairNode = chairScene.rootNode.childNode(withName: "parentNode",
                                                       recursively: true)  else { return }
         let column = hitTestResult.worldTransform.columns.3
         chairNode.position = SCNVector3(column.x, column.y, column.z)
@@ -100,6 +107,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             chairNode.scale = SCNVector3(pinchScaleX, pinchScaleY, pinchScaleZ)
             
             recognizer.scale = 1
+        }
+    }
+    
+    @objc
+    private func pan(_ recognizer: UIPanGestureRecognizer) {
+        if recognizer.state == .changed {
+            guard let sceneView = recognizer.view as? ARSCNView else { return }
+            let touch = recognizer.location(in: sceneView)
+            let translation = recognizer.translation(in: sceneView)
+            
+            let hitTestResults = self.sceneView.hitTest(touch, options: nil)
+            guard let hitTest = hitTestResults.first, let parentNode = hitTest.node.parent else { return }
+//            let chairNode = hitTest.node
+            
+            newAngleY = Float(translation.x) * Float(Double.pi / 180)
+            newAngleY += currentAngleY
+            parentNode.eulerAngles.y = newAngleY
+        }
+        
+        if recognizer.state == .ended {
+            currentAngleY = newAngleY
         }
     }
     
